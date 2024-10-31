@@ -1,0 +1,79 @@
+1. require
+
+    Usage: require 'file.php';
+
+    Purpose: Includes and evaluates the specified file.
+
+    Multiple Inclusions: If you use require multiple times with the same file, 
+    PHP will include it each time, potentially causing issues like redeclaring functions or classes.
+
+    Error Handling:
+    If the file is not found or cannot be included, it will cause a fatal error, and script execution 
+    will stop.
+
+2. require_once
+
+    Usage: require_once 'file.php';
+
+    Purpose: Includes and evaluates the specified file only once. If the file has already been 
+    included, it won’t be included again.
+
+    Multiple Inclusions: Even if you call require_once multiple times with the same file, 
+    the file will only be included once. This is useful to prevent issues like multiple function 
+    or class declarations.
+
+    Error Handling: Like require, if the file is not found, it will result in a fatal error, 
+    and the script execution will stop.
+
+
+     JSON (JavaScript Object Notation)
+     In the context of your PHP application, JSON (JavaScript Object Notation) is used to format data in a structured way, 
+     allowing it to be easily sent from the server to the client, particularly when working with JavaScript's fetch() API.
+     JSON is often used when handling API responses or when transferring data between the frontend and backend in a web application.
+
+
+***********************************************************************************************************************************************************************************************
+
+$countries = array("Mark" => "USA", "Raymond" => "UK", "Jeff" => "JPN", "Mike" => "DE");
+echo json_encode($countries);
+
+
+return => {"Mark":"USA","Raymond":"UK","Jeff":"JPN","Mike":"DE"}
+
+
+
+************************************************************************************************************************************************************************************************
+La función json_decode() se utiliza para decodificar o convertir un objeto JSON en un objeto PHP.
+$countries_JSON = '{"Mark":"USA", "Raymond":"UK", "Jeff":"JPN", "Mike":"DE"}';
+
+// using the default function
+var_dump(json_decode($countries_JSON));
+
+return  => object(stdClass)#1 (4) { ["Mark"]=> string(3) "USA" ["Raymond"]=> string(2) "UK" ["Jeff"]=> string(3) "JPN" ["Mike"]=> string(2) "DE" }
+
+
+******************************************************
+// using the second parameter to give an associative array
+var_dump(json_decode($countries_JSON, true));
+
+return => array(4) { ["Mark"]=> string(3) "USA" ["Raymond"]=> string(2) "UK" ["Jeff"]=> string(3) "JPN" ["Mike"]=> string(2) "DE" }
+
+
+
+
+Serialización: json_encode() serializa las estructuras de datos PHP en cadenas JSON, lo que las hace adecuadas para su transmisión o almacenamiento.
+
+Deserialización: json_decode() deserializa las cadenas JSON y las convierte nuevamente en estructuras de datos PHP para su manipulación dentro de la aplicación.
+
+
+
+// Encode PHP array to JSON string
+$data = array("name" => "John", "age" => 30);
+$jsonString = json_encode($data);
+
+// Decode JSON string to PHP array
+$decodedData = json_decode($jsonString, true); // true to return associative array
+
+echo $jsonString; // Output: {"name":"John","age":30}
+print_r($decodedData); // Output: Array ( [name] => John [age] => 30 )
+
